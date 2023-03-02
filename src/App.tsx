@@ -6,8 +6,12 @@ import Menu from "./components/Menu";
 import items from "./data/index";
 import { MenuItems } from "./types";
 
+const allCategories = ["所有", ...new Set(items.map((item) => item.category))];
+
 function App() {
   const [menuItems, setMenuItems] = useState<MenuItems[]>(items);
+  const [categories, setCategories] = useState<string[]>(allCategories);
+
   return (
     <main>
       <section className="menu section">
@@ -15,7 +19,7 @@ function App() {
           <h2>菜谱</h2>
           <div className="underline"></div>
         </div>
-        <Categories />
+        <Categories categories={categories} />
         <Menu items={menuItems} />
       </section>
     </main>

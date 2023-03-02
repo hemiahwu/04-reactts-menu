@@ -5,7 +5,6 @@ interface Props {
 }
 
 export default ({ items }: Props) => {
-  console.log(items);
   return (
     <div className="section-center">
       {items.map((menuItem) => {

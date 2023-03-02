@@ -55,4 +55,12 @@ export default [
     img: "https://www.thenewstep.cn/frontend/js/demo8/images/item-7.jpeg",
     desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, facere asperiores. Maiores quidem neque id nam libero eligendi necessitatibus ea? `,
   },
+  {
+    id: 8,
+    title: "培根饼",
+    category: "晚餐",
+    price: 8.99,
+    img: "https://www.thenewstep.cn/frontend/js/demo8/images/item-7.jpeg",
+    desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, facere asperiores. Maiores quidem neque id nam libero eligendi necessitatibus ea? `,
+  },
 ];
