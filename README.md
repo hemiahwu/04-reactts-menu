@@ -1,44 +1,27 @@
+# React-Hooks 实战菜单 Menu
 
+## 1. 创建 React 项目
 
-
-
-# React-Hooks 实战菜单Menu
-
-## 第一章 最终效果演示
-
-### 
-
-<div style="page-break-after: always;"></div>
-
-## 第二章 项目实战
-
-## 1. 创建React项目
-
-`````bash	
+```bash
 npm create vite@latest react-menu
-`````
+```
 
-* cd react-menu
-* code .
-* npm install
-* npm run dev
-
-
-
-### 2. 清空样式
-
-
+- cd react-menu
+- code .
+- npm install
+- npm run dev
+- 清空样式
 
 ## 2. 搭建基本布局
 
-* main.tsx搭建基本结构
+### 1. main.tsx 搭建基本结构
 
-``````tsx
+```tsx
 import { useState } from "react";
 
 // 参考地址: https://www.thenewstep.cn/frontend/js/demo8/
-import Categories from './components/Categories'
-import Menu from './components/Menu'
+import Categories from "./components/Categories";
+import Menu from "./components/Menu";
 
 function App() {
   return (
@@ -48,57 +31,45 @@ function App() {
           <h2>菜谱</h2>
           <div className="underline"></div>
         </div>
+        <Categories />
+        <Menu />
       </section>
     </main>
   );
 }
 
 export default App;
-``````
+```
 
-* 按钮组件
+### 2. 目录下创建组件
 
-``````tsx
-<Categories />
-<Menu />
-``````
-
-* 目录下创建组件
-
-`````bash
+```bash
 mkdir src/components
 
 touch src/components/Categories.tsx
 
-touch src/components/Menu.tsx   
-`````
+touch src/components/Menu.tsx
+```
 
-* Categories.tsx
+### 3. Categories.tsx
 
-`````tsx
+```tsx
 export default () => {
   return <h2>按钮分类</h2>;
 };
-`````
+```
 
-* Menu.tsx
+### 4. Menu.tsx
 
-`````tsx
+```tsx
 export default () => {
   return <h2>菜谱内容</h2>;
 };
-`````
+```
 
-* 引入组件
+### 5. index.css
 
-``````tsx
-import Categories from './components/Categories'
-import Menu from './components/Menu'
-``````
-
-* index.css
-
-``````css
+```css
 :root {
   --clr-primary-1: hsl(205, 86%, 17%);
   --clr-primary-2: hsl(205, 77%, 27%);
@@ -137,7 +108,6 @@ import Menu from './components/Menu'
   --fixed-width: 620px;
 }
 
-
 *,
 ::after,
 ::before {
@@ -147,8 +117,8 @@ import Menu from './components/Menu'
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   background: var(--clr-grey-10);
   color: var(--clr-grey-1);
   line-height: 1.5;
@@ -223,7 +193,6 @@ p {
   }
 }
 
-
 .section {
   width: 90vw;
   margin: 0 auto;
@@ -235,8 +204,6 @@ p {
     width: 95vw;
   }
 }
-
-
 
 .menu {
   padding: 5rem 0;
@@ -345,62 +312,15 @@ p {
     height: 150px;
   }
 }
-``````
-
-
-
-
-
-### 2. 配置代码
-
-* Main.tsx
-
-`````js
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <App />
-);
-`````
-
-* App.js
-
-`````js
-function App() {
-  return <div className="App">React Menu</div>
-}
-
-export default App
-`````
-
-
+```
 
 ## 3. 模拟数据
 
-* 创建src/data/data.ts
-* 参照设计图, 模拟数据
+### 1. 创建 src/data/data.ts
 
-``````ts
-export default [];
-``````
+- 参照设计图, 模拟数据
 
-`````ts
-export default [
-  {
-    id: 1,
-    img: "https://www.thenewstep.cn/frontend/js/demo8/images/item-1.jpeg",
-    title: "煎饼",
-    price: 15.99,
-    desc: `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur, facere asperiores. Maiores quidem neque id nam libero eligendi necessitatibus ea?`,
-    category: "早餐",
-  },
-];
-`````
-
-`````js
+```js
 export default [
   {
     id: 1,
@@ -460,25 +380,23 @@ export default [
   },
 ];
 export default menu;
-`````
+```
 
+### 2. App.tsx 导入数据
 
-
-* App.tsx 导入数据
-
-`````tsx
+```tsx
 import items from "./data/index";
-`````
+```
 
-* 定义状态
+- 定义状态
 
-``````tsx
+```tsx
 const [menuItems, setMenuItems] = useState(items);
-``````
+```
 
 ### 3. types/index.ts
 
-``````ts
+```ts
 export interface MenuItems {
   id: number;
   img: string;
@@ -487,19 +405,19 @@ export interface MenuItems {
   desc: string;
   category: string;
 }
-``````
+```
 
 ### 4. App.tsx 导入类型
 
-``````tsx
+```tsx
 import { MenuItems } from "./types";
 const [menuItems, setMenuItems] = useState<MenuItems[]>(items);
 console.log(menuItems);
-``````
+```
 
-### 5. App.js 将数组传值给Menu.tsx
+### 5. App.js 将数组传值给 Menu.tsx
 
-`````js
+```js
 function App() {
   // 定义状态
   const [menuItems, setMenuItems] = useState<MenuItems[]>(items);
@@ -513,11 +431,11 @@ function App() {
     </main>
   );
 }
-`````
+```
 
 ### 6. Menu.tsx 接收值和匹配类型
 
-`````tsx
+```tsx
 import { MenuItems } from "../types";
 
 interface Props {
@@ -525,68 +443,25 @@ interface Props {
 }
 
 export default ({ items }: Props) => {
-  console.log(items)
+  console.log(items);
   return <h2>菜谱内容</h2>;
 };
-`````
+```
 
+### 7. Menu.tsx 接收参数并实现渲染
 
+```js
+import { MenuItems } from "../types";
 
-### 8. Menu.js 接收参数并实现渲染
+interface Props {
+  items: MenuItems[];
+}
 
-* 遍历数据
-
-`````tsx
-<div className="section-center">
-  
-</div>
-
-{items.map((menuItem) => {
-		const { id, title, img, desc, price } = menuItem
-})}
-
-return (
-	<article class="menu-item">
-    <img src="./images/item-9.jpeg" alt="双饮" class="photo">
-    <div class="item-info">
-      <header>
-        <h4>双饮</h4>
-        <h4 class="price">¥16.99</h4>
-      </header>
-      <p class="item-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-Repudiandae, sint quam. Et reprehenderit fugiat nesciunt inventore
-laboriosam excepturi! Quo, officia.
-      </p>
-    </div>
-  </article>
-)
-
-return (
-  <article key={id} className="menu-item">
-    <img src={img} alt={title} className="photo" />
-    <div className="item-info">
-      <header>
-        <h4>{title}</h4>
-        <h4 className="price">¥{price}</h4>
-      </header>
-      <p className="item-text">{desc}</p>
-    </div>
-  </article>
-)
-`````
-
-* 整体代码
-
-`````js
-import React from 'react'
-// 1. 接收参数
-const Menu = ({ items }) => {
+export default ({ items }: Props) => {
   return (
-    // 2.渲染菜单
     <div className="section-center">
       {items.map((menuItem) => {
-        const { id, title, img, desc, price } = menuItem
+        const { id, title, img, desc, price } = menuItem;
         return (
           <article key={id} className="menu-item">
             <img src={img} alt={title} className="photo" />
@@ -598,37 +473,33 @@ const Menu = ({ items }) => {
               <p className="item-text">{desc}</p>
             </div>
           </article>
-        )
+        );
       })}
     </div>
-  )
-}
-
-export default Menu
-`````
-
-
+  );
+};
+```
 
 ## 4. App.tsx 处理分类数据中的按钮
 
-* App.tsx
+### 1. App.tsx
 
-``````tsx
+```tsx
 console.log(new Set(items.map((item) => item.category)));
-console.log(["所有",...new Set(items.map((item) => item.category))]);
+console.log(["所有", ...new Set(items.map((item) => item.category))]);
 
-const allCategories = ['所有', ...new Set(items.map((item) => item.category))]
+const allCategories = ["所有", ...new Set(items.map((item) => item.category))];
 
-const [categories, setCategories] = useState(allCategories)
+const [categories, setCategories] = useState(allCategories);
 
 const [categories, setCategories] = useState<string[]>(allCategories);
 
-<Categories categories={categories} />
-``````
+<Categories categories={categories} />;
+```
 
-* Categories.tsx
+### 2. Categories.tsx
 
-`````tsx
+```tsx
 {categories}:{categories: string[]}
 return (
   <div className="btn-container">
@@ -641,11 +512,11 @@ return (
     })}
   </div>
 );
-`````
+```
 
-* App.tsx
+### 3. App.tsx
 
-`````js
+```js
 import React, { useState } from 'react'
 import items from './data'
 import Menu from './Menu'
@@ -675,12 +546,12 @@ function App() {
 }
 
 export default App
-`````
+```
 
-* Categories.tsx 中渲染去重的button数据
+### 4. Categories.tsx 中渲染去重的 button 数据
 
-`````js
-import React from 'react'
+```js
+import React from "react";
 
 // 1. 接收参数
 const Categories = ({ categories }) => {
@@ -691,20 +562,20 @@ const Categories = ({ categories }) => {
           <button type="button" className="filter-btn" key={index}>
             {category}
           </button>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default Categories
-`````
+export default Categories;
+```
 
-## 5. Categories.js 为button添加点击事件
+## 5. Categories.js 为 button 添加点击事件
 
-* 谁定义 谁修改原则 所以修改数据的方法应该在App.tsx中
+### 1. 谁定义 谁修改原则 所以修改数据的方法应该在 App.tsx 中
 
-`````tsx
+```tsx
 /**
  * 数据 谁定义 谁修改
  */
@@ -731,79 +602,79 @@ export default Categories
  * 通过属性传值(函数也是值)
  */
 
-const filterItems = (category:string) => {
-  const newItems = items.filter((item:MenuItems) => item.category === category);
+const filterItems = (category: string) => {
+  const newItems = items.filter(
+    (item: MenuItems) => item.category === category
+  );
   setMenuItems(newItems);
 };
 
-<Categories categories={categories} filterItems={filterItems} />
+<Categories categories={categories} filterItems={filterItems} />;
 
-if (category === '所有') {
-    setMenuItems(items)
-    return
-  }
-`````
+if (category === "所有") {
+  setMenuItems(items);
+  return;
+}
+```
 
-* 触发时机 Categories.tsx
+### 2. 触发时机 Categories.tsx
 
-`````tsx
-{categories,filterItems}
-
+```tsx
 interface Props {
   categories: string[];
   filterItems: (c: string) => void;
 }
+export default ({ categories, filterItems }: Props) => {
+  return (
+    <div className="btn-container">
+      {categories.map((category, index) => {
+        return (
+          <button
+            onClick={() => filterItems(category)}
+            type="button"
+            className="filter-btn"
+            key={index}
+          >
+            {category}
+          </button>
+        );
+      })}
+    </div>
+  );
+};
+```
 
-{ categories, filterItems }: Props
+### 3. App.tsx 实现 filterItems 方法
 
-onClick={() => filterItems(category)}
-`````
-
-
-
-
-
-`````html
-<button
-  ...
-  onClick={() => filterItems(category)}
->
-  {category}
-</button>
-`````
-
-### 12. App.js实现filterItems方法
-
-`````js
+```js
 const filterItems = (category) => {
   const newItems = items.filter((item) => item.category === category);
   setMenuItems(newItems);
 };
-`````
+```
 
-### 13. App.js通过属性将事件传递给Categories.js
+### 4. App.tsx 通过属性将事件传递给 Categories.tsx
 
-`````html
-<Categories categories={categories} filterItems={filterItems} />
-`````
+```html
+<Categories categories="{categories}" filterItems="{filterItems}" />
+```
 
-### 14. Categories.js 接收参数
+### 5. Categories.tsx 接收参数
 
-`````js
-const Categories = ({ categories, filterItems }) => { }
-`````
+```js
+const Categories = ({ categories, filterItems }) => {};
+```
 
-### 15. App.js处理点击所有按钮
+### 6. App.js 处理点击所有按钮
 
-`````js
+```js
 const filterItems = (category) => {
   // 判断分类是否等于所有
-  if (category === '所有') {
-    setMenuItems(items)
-    return
+  if (category === "所有") {
+    setMenuItems(items);
+    return;
   }
-  const newItems = items.filter((item) => item.category === category)
-  setMenuItems(newItems)
-}
-`````
-
+  const newItems = items.filter((item) => item.category === category);
+  setMenuItems(newItems);
+};
+```
