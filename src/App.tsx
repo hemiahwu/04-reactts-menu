@@ -3,7 +3,11 @@ import { useState } from "react";
 import Categories from "./components/Categories";
 import Menu from "./components/Menu";
 
+import items from "./data/index";
+import { MenuItems } from "./types";
+
 function App() {
+  const [menuItems, setMenuItems] = useState<MenuItems[]>(items);
   return (
     <main>
       <section className="menu section">
@@ -12,7 +16,7 @@ function App() {
           <div className="underline"></div>
         </div>
         <Categories />
-        <Menu />
+        <Menu items={menuItems} />
       </section>
     </main>
   );
