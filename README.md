@@ -1,4 +1,16 @@
-# React-Hooks 实战菜单 Menu
+# 04-React-Hooks 实战菜单 Menu
+
+## 第一章 课程代码
+
+Git仓库地址: https://github.com/hemiahwu/04-reactts-menu
+
+百度网盘链接: https://pan.baidu.com/s/1UOoBWLpG-vycWRlnwP877A?pwd=dfy6 提取码: dfy6
+
+
+
+课程答疑微信: 
+
+<img src="https://i.postimg.cc/YCWHJWTw/Wechat-IMG233.jpg" alt="WechatIMG233"  />
 
 ## 1. 创建 React 项目
 
